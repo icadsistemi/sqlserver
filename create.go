@@ -214,7 +214,7 @@ func MergeCreate(db *gorm.DB, onConflict clause.OnConflict, values clause.Values
 }
 
 func outputInserted(db *gorm.DB) (hasOutput bool) {
-	if db.Statement.Schema != nil && len(db.Statement.Schema.FieldsWithDefaultDBValue) > 0 {
+	if db.Statement.Schema != nil && len(db.Statement.Schema.FieldsWithDefaultDBValue) > 0 && !db.Statement.SkipOutputStatement {
 		for _, field := range db.Statement.Schema.FieldsWithDefaultDBValue {
 			if hasOutput {
 				db.Statement.WriteString(",")
