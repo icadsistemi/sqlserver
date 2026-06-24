@@ -214,11 +214,12 @@ func MergeCreate(db *gorm.DB, onConflict clause.OnConflict, values clause.Values
 }
 
 func outputInserted(db *gorm.DB) (hasOutput bool) {
-	if db.Statement.Context.Value("skip-output-statement").(bool) {
-		return false
-	}
-
 	if db.Statement.Schema != nil && len(db.Statement.Schema.FieldsWithDefaultDBValue) > 0 {
+
+		if model, ok := reflect.New(db.Statement.Schema.ModelType).Interface().(SkipOutputStatementInterface); ok && model.SkipOutputStatement() {
+			return
+		}
+
 		for _, field := range db.Statement.Schema.FieldsWithDefaultDBValue {
 			if hasOutput {
 				db.Statement.WriteString(",")
