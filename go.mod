@@ -7,4 +7,4 @@ require (
 	gorm.io/gorm v1.30.0
 )
 
-replace gorm.io/gorm => github.com/icadsistemi/gorm v1.1.5
+replace gorm.io/gorm => github.com/icadsistemi/gorm v1.2.0-beta.1
