@@ -18,7 +18,7 @@ db, err := gorm.Open(sqlserver.Open(dsn), &gorm.Config{})
 ```go
 import (
   "github.com/microsoft/go-mssqldb/azuread"
-  "github.com/icadsistemi/gorm-driver-sqlserver"
+  "github.com/icadsistemi/sqlserver"
   "gorm.io/gorm"
 )
 

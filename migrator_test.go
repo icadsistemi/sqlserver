@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	sqlserver "github.com/icadsistemi/gorm-driver-sqlserver"
+	sqlserver "github.com/icadsistemi/sqlserver"
 	"gorm.io/gorm"
 )
 
